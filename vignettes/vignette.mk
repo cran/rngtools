@@ -36,8 +36,10 @@ endif
 SRC_DIR=src
 RNW_SRCS = rngtools-unitTests.Rnw
 PDF_OBJS=$(RNW_SRCS:.Rnw=.pdf)
+# allow redfining pdf targets in local mode
+#%PDF_OBJS%#
 
-TEX_OBJS=$(PDF_OBJS:.pdf=.tex)
+TEX_OBJS=$(RNW_SRCS:.Rnw=.tex)
 
 ifneq (${R_HOME},)
 R_CHECK=1
@@ -114,15 +116,16 @@ define do_install
 endef	
 endif
 
-#ifdef LOCAL_MODE
-#define update_inst_doc
-#	# Updating PDF files in inst/doc
-#	mv -f *.pdf ../inst/doc
-#endef
-#else
-#define update_inst_doc
-#endef	
-#endif
+#%INST_TARGET%#
+ifdef INST_TARGET
+define update_inst_doc
+	# Moving PDF files to ../inst/doc
+	mv -f $1.pdf ../inst/doc
+endef
+else
+define update_inst_doc
+endef	
+endif
 
 all: init $(PDF_OBJS) do_clean
 	@echo "# All vignettes in 'vignettes' are up to date"
@@ -140,8 +143,11 @@ ifneq ($(R_CHECK),0)
 else
 	# R CMD check: FALSE
 endif
-
-	# Detected vignettes: $(RNW_OBJS)
+ifdef INST_TARGET
+	# BuildVignettes: no (storing in ../inst/doc) 
+endif
+	# Detected vignettes: $(RNW_SRCS)
+	# Detected targets: $(PDF_OBJS)
 
 clean:
 	rm -fr *.bbl *.run.xml *.blg *.aux *.out *-blx.bib \
@@ -170,7 +176,11 @@ ifndef QUICK
 endif
 
 # Generate .pdf from .Rnw
+ifdef INST_TARGET
+../inst/doc/%.pdf: ${SRC_DIR}/%.Rnw
+else
 %.pdf: ${SRC_DIR}/%.Rnw
+endif
 	$(do_install)
 	# Generating vignette $@ from ${SRC_DIR}/$*.Rnw
 	# Using R_LIBS: $(R_LIBS)
@@ -192,7 +202,7 @@ ifdef USE_PDFLATEX
 	@pdflatex $(VIGNETTE_BASENAME) >> $(VIGNETTE_BASENAME)-pdflatex.log
 ifndef QUICK
 	# Compact vignettes
-	$(RSCRIPT) --vanilla -e "tools::compactPDF('$(VIGNETTE_BASENAME).pdf')"
+	$(RSCRIPT) --vanilla -e "tools::compactPDF('$(VIGNETTE_BASENAME).pdf', gs_quality = 'ebook')"
 endif
 	# Remove temporary LaTeX files (but keep the .tex)
 	rm -fr $(VIGNETTE_BASENAME).toc $(VIGNETTE_BASENAME).log \
@@ -211,10 +221,14 @@ endif
 endif	
 	# Update fake vignette file ./$*.Rnw
 	$(RSCRIPT) --vanilla -e "pkgmaker::makeFakeVignette('${SRC_DIR}/$*.Rnw', '$*.Rnw')"
-	$(update_inst_doc)
+	$(call update_inst_doc, $*)
 
 # only run tests if not checking: CRAN check run the tests separately
+ifdef INST_TARGET
+../inst/doc/%-unitTests.pdf:
+else
 %-unitTests.pdf:
+endif
 	$(do_install)
 	# Generating vignette for unit tests: $@
 	# Using R_LIBS: $(R_LIBS)
@@ -222,6 +236,9 @@ endif
 ifdef LOCAL_MODE
 	$(eval VIGNETTE_BASENAME := $(shell basename $@ .pdf))
 	# Compact vignette file
-	$(RSCRIPT) --vanilla -e "tools::compactPDF('$(VIGNETTE_BASENAME).pdf')"
+	$(RSCRIPT) --vanilla -e "tools::compactPDF('$(VIGNETTE_BASENAME).pdf', gs_quality = 'ebook')"
 endif
-	$(update_inst_doc)
+	$(call update_inst_doc, $*-unitTests)
+	
+update_doc:
+	$(call update_inst_doc, *)
