@@ -7,18 +7,12 @@
 \RequirePackage{ae,mathpple}    % ae as a default font pkg works with Sweave
 \RequirePackage[T1]{fontenc}
 
-<<echo=FALSE,print=FALSE>>=
-pkg <- 'rngtools'
-require( pkg, character.only=TRUE )
-prettyVersion <- packageDescription(pkg)$Version
-prettyDate <- format(Sys.Date(), '%B %e, %Y')
-authors <- packageDescription(pkg)$Author
-@
 
 \usepackage[colorlinks]{hyperref}
-\author{\Sexpr{authors}}
-\title{\texttt{\Sexpr{pkg}}: Unit testing results\footnote{Vignette computed  via R CMD check/build  on Sun Jul 28 13:40:45 2013} \footnote{File: ''}}
-\date{\texttt{\Sexpr{pkg}} version \Sexpr{prettyVersion} as of \Sexpr{prettyDate}}
+\author{Renaud Gaujoux}
+\title{\texttt{rngtools}: Unit testing results\footnote{Vignette computed  via R CMD check/build  on Sun Jul 28 13:40:45 2013} \footnote{File: ''}}
+\date{\texttt{rngtools} version 1.2.1 as of July 28, 2013}
+\usepackage{Sweave}
 \begin{document}
 \maketitle
 

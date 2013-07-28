@@ -76,7 +76,7 @@ endif
 ifneq ('$(install)', 'no')
 ifeq ('$(install)','yes')
 # install in temporary directory at each run
-TMP_INSTALL_DIR:=/tmp/Rpkglib_57c9e3e483c
+TMP_INSTALL_DIR:=/tmp/Rpkglib_656a584851d
 FORCE_INSTALL:=TRUE
 else
 ifeq ('$(install)','quick')
@@ -171,7 +171,7 @@ clean-all: clean
 
 setvars:
 ifeq (${R_BIN},)
-R_BIN=/usr/lib/R/bin
+R_BIN=/home/renaud/R/devel/bin
 endif
 RPROG:=$(R_BIN)/R
 RSCRIPT:=$(R_BIN)/Rscript
@@ -207,7 +207,7 @@ ifdef USE_PDFLATEX
 	# LaTeX compilation 3/3
 	@pdflatex $* >> $*-pdflatex.log
 	# Compact vignettes
-	$(RSCRIPT) --vanilla -e "tools::compactPDF('$*.pdf', gs_quality = 'ebook')"
+	$(RSCRIPT) --vanilla -e "pkgmaker::compactVignettes('$*.pdf')"
 	# Remove temporary LaTeX files (but keep the .tex)
 	rm -fr $*.toc $*.log $*.bbl $*.blg $*.aux $*.out $*-blx.bib	
 	
@@ -237,7 +237,7 @@ endif
 ifdef LOCAL_MODE
 	$(eval VIGNETTE_BASENAME := $(shell basename $@ .pdf))
 	# Compact vignette file
-	$(RSCRIPT) --vanilla -e "tools::compactPDF('$(VIGNETTE_BASENAME).pdf', gs_quality = 'ebook')"
+	$(RSCRIPT) --vanilla -e "pkgmaker::compactVignettes('$(VIGNETTE_BASENAME).pdf')"
 endif
 	$(call update_inst_doc, $*-unitTests)
 	
