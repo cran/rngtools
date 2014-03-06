@@ -1,13 +1,14 @@
-e006f5160e864c52f4e8f6d67491e041 *DESCRIPTION
+2f38fe52d9b165b47c771ac2b0da0fbd *DESCRIPTION
 b9a32980e99ce9c025b0597ae8b58717 *NAMESPACE
 5adf706c7f033e4df1be28d4fd68d680 *R/RNG.R
 ecbc598f29702d10d8efb3fb0495fe28 *R/RNGseq.R
 fec46586c69d62db5fb1e13bb125cd50 *R/format.R
 e2029dcfc0a3f91647cdd34d4ced1929 *R/rngtools-package.r
+3820488e613033e8bb5b526227147be1 *README.md
 219cf9f7d2b662dfa2a9308817d7e83f *build/vignette.rds
 6118ae7b86de4110717f8213518e5a88 *inst/doc/rngtools-unitTests.R
-4b483d014a7c1fec4572df1e4fa9d02a *inst/doc/rngtools-unitTests.Rnw
-84f1da89aa737cb5e7ced025c8958a3b *inst/doc/rngtools-unitTests.pdf
+640605f55fb05c3bc722bfc2dff10326 *inst/doc/rngtools-unitTests.Rnw
+9b0719669b75e46cedb037f2b3849193 *inst/doc/rngtools-unitTests.pdf
 2fe79852860623ebee42ac6f3d09d8f4 *inst/tests/runit.RNG.r
 43a4b97ff6a6ab8eb0bc055a1296a297 *inst/tests/runit.RNGseq.r
 454f088e424ec986386a05df67547d74 *inst/tests/runit.format.r
@@ -19,4 +20,4 @@ f3ed281a3d6a2486f077e3ae82d7d053 *man/rng.Rd
 5309ae8b9c73e02166f9800e41165144 *man/rngtools.Rd
 6e57687d6148e44975f7e448a8635dd1 *man/uchecks.Rd
 1b0d4ec95a873e5554708f9c20ca1e70 *tests/doRUnit.R
-4b483d014a7c1fec4572df1e4fa9d02a *vignettes/rngtools-unitTests.Rnw
+640605f55fb05c3bc722bfc2dff10326 *vignettes/rngtools-unitTests.Rnw
