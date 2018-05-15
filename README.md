@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/renozao/rngtools.png?branch=master)](https://travis-ci.org/renozao/rngtools)
+[![codecov](https://codecov.io/gh/renozao/rngtools/branch/master/graph/badge.svg)](https://codecov.io/gh/renozao/rngtools)
+
 rngtools
 ========
 
