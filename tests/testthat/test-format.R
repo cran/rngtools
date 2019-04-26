@@ -68,7 +68,7 @@ test_that('RNGdigest and RNGstr', {
   
 })
 
-checkRNGtype <- function(x, ..., expL=2L){
+checkRNGtype <- function(x, ..., expL=3L){
   
   fn <- RNGtype
   oldRNG <- getRNG()

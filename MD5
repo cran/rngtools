@@ -1,4 +1,4 @@
-649cde1dcc325c5bf402dc497694822a *DESCRIPTION
+509aea859e9b04a2463eadd483dc9b7e *DESCRIPTION
 fab50f07538a7c7e3e7273719ca36462 *NAMESPACE
 a9fd216c4e552609d718e8a6d09ed411 *R/RNG.R
 877aad055679560fb035788448ca7516 *R/RNGseq.R
@@ -18,4 +18,4 @@ e0c5291d3c54be17c5f35cf094d64629 *man/uchecks.Rd
 8f941f92af5eaf2caef4c7ea281a1977 *tests/testthat.R
 7651e7e2e4353b587194abdc09e63232 *tests/testthat/test-RNG.r
 8acff0e5a10c16727c0880a79a6a492d *tests/testthat/test-RNGseq.r
-b96c52dc4c2f74f343d3dd5e0180a1b1 *tests/testthat/test-format.R
+fffdaa28da0dad16d351083bc69104bf *tests/testthat/test-format.R
