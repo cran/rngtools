@@ -1,6 +1,6 @@
 # Unit test 
 # 
-# Author: Renaud Gaujoux
+# Author: Renaud Gaujoux (edited by Max Kuhn)
 # Created: 01 May 2018
 # Copyright: Cytoreason (2017)
 ###############################################################################
@@ -9,6 +9,7 @@ context("Formatting functions")
 
 library(stringr)
 library(pkgmaker)
+library(utils)
 
 # RUnit-testthat bridge 
 checkIdentical <- function(x, y, msg){
@@ -48,7 +49,7 @@ checkFun <- function(fn, name){
 
 test_that('RNGdigest and RNGstr', {
   
-  RNGkind('default', 'default')
+  RNGkind_default()
   on.exit( RNGrecovery() )
   
   fn <- c('RNGdigest', 'RNGstr')
@@ -68,7 +69,9 @@ test_that('RNGdigest and RNGstr', {
   
 })
 
-checkRNGtype <- function(x, ..., expL=3L){
+# Note: in R 3.6, RNGkind returns a vector of length 3 (vs 2 in previous versions)
+# Here we set the expected default length according to the runtime version 
+checkRNGtype <- function(x, ..., expL = .RNGkind_length()){
   
   fn <- RNGtype
   oldRNG <- getRNG()
