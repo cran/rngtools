@@ -7,8 +7,6 @@
 
 context("Formatting functions")
 
-library(stringr)
-library(pkgmaker)
 library(utils)
 
 # RUnit-testthat bridge 
@@ -78,7 +76,7 @@ checkRNGtype <- function(x, ..., expL = .RNGkind_length()){
   if( !missing(x) ){
     d <- fn(x)
     obj <- getRNG(x)
-    cl <- str_c(class(x), '(', length(x), ')')
+    cl <- paste0(class(x), '(', length(x), ')')
   }else{
     d <- fn()
     obj <- getRNG()

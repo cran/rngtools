@@ -5,9 +5,6 @@
 
 context("RNGseq: RNG streams")
 
-library(stringr)
-library(pkgmaker)
-
 test_that('RNGseq_seed', {
 	
 	# actual testing function

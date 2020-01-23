@@ -5,9 +5,6 @@
 
 context("Get/Set RNG")
 
-library(stringr)
-library(pkgmaker)
-
 test_that('getRNG', {
 
 	RNGkind_default()
@@ -20,7 +17,7 @@ test_that('getRNG', {
 		oldRNG <- RNGseed()
 		if( !missing(x) ){
 			d <- fn(x, ...)
-			cl <- str_c(class(x), '(', length(x), ')')
+			cl <- paste0(class(x), '(', length(x), ')')
 		}else{
 			d <- fn()
 			cl <- 'MISSING'
