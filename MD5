@@ -1,6 +1,6 @@
-ca6fc4b011cbb5126ff281b089ab0c95 *DESCRIPTION
+f85c37ebc0e09ff3ca560f117add847b *DESCRIPTION
 9fcd1a7ad06dc43b072a98d47665e0d7 *NAMESPACE
-a8e94277bf108d4ea71ec413cbe91aa4 *R/RNG.R
+104e54ca6877e5a6c374a6013448929a *R/RNG.R
 6f389acf73a6a632b7e2a0918004febd *R/RNGseq.R
 2e45d90d8242367b5aa8747af104e927 *R/format.R
 14798518784acfe5cc5a9b2eb16065df *R/rngtools-package.r
@@ -17,6 +17,6 @@ e9d2f123dc2a0dfc756c470223999e0f *man/getRNG1.Rd
 ecfe5bc1a7593c9c504e613d0b4eaf67 *man/rngtools.Rd
 e0c5291d3c54be17c5f35cf094d64629 *man/uchecks.Rd
 497184d2d2283f9fe133b686aaa9211f *tests/testthat.R
-421efb947dab4efd26e6938d73328a0f *tests/testthat/test-RNG.r
+5eee11a4d8b934c745d8a9239948e727 *tests/testthat/test-RNG.r
 48b2f7a75b1d164229cc43c0072347d1 *tests/testthat/test-RNGseq.r
 1597eb803714bf6bd42346aa7ee07ebe *tests/testthat/test-format.R
